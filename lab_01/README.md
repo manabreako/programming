@@ -4,87 +4,108 @@
 ### Дан словарь с координатами городов. При помощи формулы - ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5, нужно посчитать растояние между городами.
 ### КОД:
 ```python
-     sites = {
+sites = {
     'Moscow': (550, 370),
     'London': (510, 510),
     'Paris': (480, 480),
 }
 
-
 distances = {}
 
-
-for city1, cord1 in sites.items():
-    distances[city1] = {}  
-    for city2, cord2 in sites.items():
-        if city1 != city2:  
-            
-            distance = (((cord1[0] - cord2[0]) ** 2 + (cord1[1] - cord2[1]) ** 2) ** 0.5 )
-            distances[city1][city2] = distance  
+for city1, x1 in sites.items():
+    distances[city1] = {}
+    for city2, x2 in sites.items():
+        if city1 != city2:
+            distance = (((x1[0] - x2[0]) ** 2) + ((x1[1] - x2[1]) ** 2)) ** 0.5
+            distances[city1][city2] = distance
 
 print(distances)
 ````
 
 ### РЕЗУЛЬТАТ:
-![000.png](https://github.com/MbSmD/programming/blob/main/lab_01/screenshots/000.png)
+![00.png](https://github.com/manabreako/python/blob/main/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0/SCRENS/0.png)
 ## 01_circle
 ### Дан радиус круга: r= 42 и пи = 3.1415926.  Нужно найти пложнадь круга до точности в 4 знака после запятой. Точность мы указываем при помощи round().
 ### Так же даны 2 точки point_1 = (23, 34) и point_2 = (30, 30), надо определить, лежат они внутри круга или нет.
 ### КОД:
 ```python
+
 radius = 42
+
+pi = 3.1415926
+S = radius**2 * pi
+print(S)
+
 point_1 = (23, 34)
-point_2 = (30, 30)
-S = radius**2 * 3.1415926
-S = round(S,4)
-M = point_1 = (23**2 + 34**2)**0.5
-print("S = ", S)
+
+
+M =(23**2 + 34**2)**0.5
 if M < radius:
-    print("Точка M находится внутри кругa")
+    print("True")
 else:
-    print("Точка М не находится внутри круга")
+    print("False")
+
+
+point_2 = (30, 30)
+
 N = (30**2 + 30**2) ** 0.5
 if N < radius:
-    print("Точка N находится внутри кругa")
+    print("True")
 else:
-    print("Точка N не находится внутри круга")
+    print("False")
 ```
 ### РЕЗУЛЬТАТ:
-![01.png](https://github.com/MbSmD/programming/blob/main/lab_04/screenshots/01.png)
+![01.png](https://github.com/manabreako/python/blob/main/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0/SCRENS/1.png)
 ## 02_operation
 ### Надо между числа '1 2 3 4 5' раставить знаки операций так, что бы получился ответ 25.
 ### КОД:
 ```python
-result = 1 * ((2 + 3) + (4 * 5))
-print(result)
+a = ((1*2)+3+(4*5))
+print(a)
 ```
 ### РЕЗУЛЬТАТ:
-![02.png](https://github.com/MbSmD/programming/blob/main/lab_04/screenshots/02.png)
+![02.png](https://github.com/manabreako/python/blob/main/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0/SCRENS/2%E2%81%842.png)
 ## 03_favorite_movies
 ### Надо при помощи индексации вывести на консоль фильмы из списка:
 ### my_favorite_movies = 'Терминатор, Пятый элемент, Аватар, Чужие, Назад в будущее' 
 ### в порядке - первый фильм, последний, второй, второй  с конца
 ### КОД:
 ```python
-a = 'Терминатор, Пятый элемент, Аватар, Чужие, Назад в будущее'
-print(a[0:10],',', a[-15:-1],',', a[12:25],',', a[-22:-17])
+my_favorite_movies = 'Терминатор, Пятый элемент, Аватар, Чужие, Назад в будущее'
+
+print(my_favorite_movies[0:10])
+print(my_favorite_movies[42:57])
+print(my_favorite_movies[12:25])
+print(my_favorite_movies[-22:-17])
+
 ```
 ### РЕЗУЛЬТАТ:
-![03.png](https://github.com/MbSmD/programming/blob/main/lab_04/screenshots/03.png)
+![03.png](https://github.com/manabreako/python/blob/main/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0/SCRENS/Screenshot_20250220_142009.png)
 ## 04_my_family
 ### Создаём список my_family = [] состоящий минимум из трёх элементов.
 ### При помощи данного списка заполняем список my_family_height = [] и добавляе рост каждому элементу списка
 ### Выводим на консоль отдельно рост отца, и общий рост всех членов семьи.
 ### КОД:
 ```python
-my_family = ["Илья", "Сергей", "Оксана"]
-my_family_height = [my_family[0],194,my_family[1],186,my_family[2],182]
-a = my_family_height[1]+my_family_height[3]+my_family_height[5]
-print("рост отца -" ,my_family_height[3],"cm")
-print(a, "- сумма ростов членов семьи")
+
+my_family = ['я', 'отец', 'мама', 'сестра']
+
+my_family_height = [
+    ['я', 143], # мой рост
+    ['отец', 197], # рост отца
+    ['мама', 179], # рост мамы
+    ['сестра', 110], # рост сестры
+]
+
+father_height = next(height for name, height in my_family_height if name == 'отец')
+print(f'Рост отца - {father_height} см')
+
+all_height = sum(height for name, height in my_family_height)
+print(f'Общий рост - {all_height} см')
+
 ```
 ### РЕЗУЛЬТАТ:
-![04.png](https://github.com/MbSmD/programming/blob/main/lab_04/screenshots/04.png)
+![04.png](https://github.com/manabreako/python/blob/main/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0/SCRENS/4.png)
 ## 05_zoo
 ### Дан список животных zoo = ['lion', 'kangaroo', 'elephant', 'monkey', ].
 ### Нужно посадить между 'lion' и 'kangaroo' 'bear', и вывести список.
@@ -94,17 +115,28 @@ print(a, "- сумма ростов членов семьи")
 ### КОД:
 ```python
 zoo = ['lion', 'kangaroo', 'elephant', 'monkey', ]
+
+zoo.insert(1, 'bear')
+print('Список животных после добавления медведя: ', zoo)
+
+
 birds = ['rooster', 'ostrich', 'lark', ]
-zoo.insert(1,'bear')
-zoo.append(birds[0])
-zoo.append(birds[1])
-zoo.append(birds[2])
-zoo.pop(3)
-print(zoo)
-print("лев в клетке", zoo.index('lion')+1, ",", "жаворонок в клетке",zoo.index('lark')+1)
+
+
+zoo.extend(birds)
+print('Список животных после добавления птиц: ', zoo)
+
+
+zoo.remove('elephant')
+print('Список животных без слона: ', zoo)
+
+
+lion_pos = zoo.index('lion') + 1
+lark_pos = zoo.index('lark') + 1
+print(f'Лев сидит в клетке №{lion_pos}, а жаворонок в клетке №{lark_pos}')
 ```
 ### РЕЗУЛЬТАТ:
-![05.png](https://github.com/MbSmD/programming/blob/main/lab_04/screenshots/05.png)
+![05.png](https://github.com/manabreako/python/blob/main/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0/SCRENS/5.png)
 ## 06_song_list
 ### Дан список песен Depeche Mode со временем звучания с точностью до долей минут.
 ### Нужно вывести на консоль общее время звучания трех песен: 'Halo', 'Enjoy the Silence' и 'Clean'
@@ -124,6 +156,13 @@ violator_songs_list = [
     ['Blue Dress', 4.29],
     ['Clean', 5.83],
 ]
+
+
+
+time = round(violator_songs_list[3][1]+violator_songs_list[5][1]+violator_songs_list[-1][1], 2)
+print('Три песни звучат: ', time, ' минуты')
+
+
 violator_songs_dict = {
     'World in My Eyes': 4.76,
     'Sweetest Perfection': 4.43,
@@ -133,24 +172,17 @@ violator_songs_dict = {
     'Enjoy the Silence': 4.6,
     'Policy of Truth': 4.88,
     'Blue Dress': 4.18,
+
     'Clean': 5.68,
 }
-a=violator_songs_list[3][1]
-b=violator_songs_list[5][1]
-c=violator_songs_list[8][1]
-time0 = a + b + c
-time0 = round(time0,2)
 
-print('три песни звучат', time0, 'минут')
-n = violator_songs_dict['Sweetest Perfection']
-m = violator_songs_dict['Policy of Truth']
-r = violator_songs_dict['Blue Dress']
-time1 = n + m + r
-time1 =round(time1,1)
-print("а другие три песни звучат", time1, "минут")
+
+
+secondtime = round(violator_songs_dict['Sweetest Perfection'] + violator_songs_dict['Policy of Truth'] + violator_songs_dict['Blue Dress'])
+print('А другие три песни звучат: ', secondtime, 'минут')
 ```
 ### РЕЗУЛЬТАТ:
-![06.png](https://github.com/MbSmD/programming/blob/main/lab_04/screenshots/06.png)
+![06.png](https://github.com/manabreako/python/blob/main/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0/SCRENS/6.png)
 ## 07_secret
 ### Есть зашифрованное сообщение
 ### secret_message = [
@@ -169,6 +201,7 @@ print("а другие три песни звучат", time1, "минут")
 5. ###   пятое слово - буквы с 17 по 21, включительно, в обратном порядке
 ### КОД:
 ```python
+
 secret_message = [
     'квевтфпп6щ3стмзалтнмаршгб5длгуча',
     'дьсеы6лц2бане4т64ь4б3ущея6втщл6б',
@@ -176,16 +209,17 @@ secret_message = [
     'ьд5фму3ежородт9г686буиимыкучшсал',
     'бсц59мегщ2лятьаьгенедыв9фк9ехб1а',
 ]
+
+
 a = secret_message[0][3]
 b = secret_message[1][9:13]
-c = secret_message[2][5:15:2]
-d = secret_message[3][12:6:-1]
-e = secret_message[4][20:15:-1]
-secret = a + ' ' + b + ' ' + c + ' ' + d + ' ' + e
-print(secret)
+c = secret_message[2][5:14:2]
+d = secret_message[3][7:13][::-1]
+e = secret_message[4][16:21][::-1]
+print(a, b, c, d, e)
 ```
 ### РЕЗУЛЬТАТ:
-![07.png](https://github.com/MbSmD/programming/blob/main/lab_04/screenshots/07.png)
+![07.png](https://github.com/manabreako/python/blob/main/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0/SCRENS/7.png)
 ## 08_garden
 ### Даны кортежи garden = ('ромашка', 'роза', 'одуванчик', 'ромашка', 'гладиолус', 'подсолнух', 'роза', )
 ### и meadow = ('клевер', 'одуванчик', 'ромашка', 'клевер', 'мак', 'одуванчик', 'ромашка', )
@@ -198,19 +232,28 @@ print(secret)
 ### КОД:
 ```python
 garden = ('ромашка', 'роза', 'одуванчик', 'ромашка', 'гладиолус', 'подсолнух', 'роза', )
+
 meadow = ('клевер', 'одуванчик', 'ромашка', 'клевер', 'мак', 'одуванчик', 'ромашка', )
+
+
 garden_set = set(garden)
 meadow_set = set(meadow)
-allflowers = garden + meadow
-allflowers_set = set(allflowers)
-print(allflowers_set,  "все  цветы")
-print(garden_set, "цветы растущие в саду")
-print(meadow_set, "цветы растущие на лугу")
-print(garden_set-meadow_set, "цветы растущие только в саду")
-print(meadow_set-garden_set, "цветы растущие только на лугу")
+
+
+print ('Все виды цветов: ', 'Сад - ', str(garden_set), 'Луг - ', str(meadow_set))
+
+
+together=garden_set&meadow_set
+print('Растут и там и там: ', together)
+
+
+print('Растут в саду, но не растут на лугу: ', garden_set-meadow_set)
+
+
+print('Растут на лугу, но не растут в саду: ', meadow_set-garden_set)
 ```
 ### РЕЗУЛЬТАТ:
-![08.png](https://github.com/MbSmD/programming/blob/main/lab_04/screenshots/08.png)
+![08.png](https://github.com/manabreako/python/blob/main/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0/SCRENS/8.png)
 ## 09_shoping
 ### Дан словарь магазинов shops в который входят ашан, пятёрочка и магнит, а так же сладости.
 ### Надо создать словарь цен, состоящий из двух магазинов с минимальными ценами.
@@ -263,7 +306,7 @@ print(sweets.setdefault('карамель'))
 print(sweets.setdefault('пирожное'))
 ```
 ### РЕЗУЛЬТАТ:
-![09.png](https://github.com/MbSmD/programming/blob/main/lab_04/screenshots/09.png)
+![09.png](https://github.com/manabreako/python/blob/main/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0/SCRENS/9.png)
 ## 10_store
 ### Есть словарь кодов товаров - goods = {} и словарь списков количества товара на складе store = {}
 ### Рассчитать на какую сумму лежит каждого товара на складе
@@ -275,6 +318,8 @@ goods = {
     'Диван': '34567',
     'Стул': '45678',
 }
+
+
 store = {
     '12345': [
         {'quantity': 27, 'price': 42},
@@ -293,44 +338,34 @@ store = {
         {'quantity': 43, 'price': 97},
     ],
 }
+
+
+lamps_cost = store[goods['Лампа']][0]['quantity'] * store[goods['Лампа']][0]['price']
 lamp_code = goods['Лампа']
 lamps_item = store[lamp_code][0]
 lamps_quantity = lamps_item['quantity']
 lamps_price = lamps_item['price']
 lamps_cost = lamps_quantity * lamps_price
 print('Лампа -', lamps_quantity, 'шт, стоимость', lamps_cost, 'руб')
+
+
+table_cost1=0
 table_code = goods['Стол']
-tables_item = store[table_code][0]
-tables_item1 = store[table_code][1]
-tables_quantity = tables_item['quantity']
-tables_quantity1 = tables_item1['quantity']
-tables_price = tables_item['price']
-tables_price1 = tables_item1['price']
-tables_cost = tables_quantity * tables_price
-tables_cost1 = tables_quantity1 * tables_price1
-print('Стол -', tables_quantity+tables_quantity1, 'шт, стоимость', tables_cost+tables_cost1, 'руб')
+table_cost=(store[goods['Стол']][0]['quantity']*store[goods['Стол']][0]['price'])+(store[goods['Стол']][1]['quantity']*store[goods['Стол']][1]['price'])
+table_quantity = (store[goods['Стол']][0]['quantity'])+(store[goods['Стол']][1]['quantity'])
+print('Стол -', table_quantity, 'шт, стоимость', table_cost, 'руб')
 
-sofa_code = goods['Диван']
-sofas_item = store[sofa_code][0]
-sofas_item1 = store[sofa_code][1]
-price1 = sofas_item['quantity']* sofas_item['price']
-price2 = sofas_item1['quantity']* sofas_item1['price']
-sofa_cost = price1 + price2
-sofas_quantity = sofas_item['quantity']+sofas_item1['quantity']
+chear_cost = (store[goods['Стул']][0]['quantity']*store[goods['Стул']][0]['price'])+(store[goods['Стул']][1]['quantity']*store[goods['Стул']][1]['price'])+(store[goods['Стул']][2]['quantity']*store[goods['Стул']][2]['price'])
+chear_code = goods['Стул']
+chear_item = (store[goods['Стул']][0]['quantity'])+(store[goods['Стул']][1]['quantity'])+(store[goods['Стул']][2]['quantity'])
+print('Стул -', chear_item, 'шт, стоимость', chear_cost, 'руб')
 
-print('Диван -', sofas_quantity, 'шт, стоимость', sofa_cost, 'руб')
+print('Диван -', (store[goods['Диван']][0]['quantity'])+(store[goods['Диван']][1]['quantity']), 'шт, стоимость', (store[goods['Диван']][0]['quantity']*store[goods['Диван']][0]['price'])+store[goods['Диван']][1]['quantity']*store[goods['Диван']][1]['price'], 'руб')
 
-chair_code = goods['Стул']
-chair_item = store[chair_code][0]
-chair_item1 = store[chair_code][1]
-chair_item2 = store[chair_code][2]
-chair_cost = chair_item['quantity'] * chair_item['price'] + chair_item1['quantity'] * chair_item1['price'] + chair_item2['quantity'] * chair_item2['price']
-chair_quantity = chair_item['quantity'] + chair_item1['quantity'] + chair_item2['quantity']
-print('Стул -', chair_quantity, 'шт, стоимость', chair_cost, 'руб')
 
 ```
 ### РЕЗУЛЬТАТ:
-![10.png](https://github.com/MbSmD/programming/blob/main/lab_04/screenshots/10.png)
+![10.png](https://github.com/manabreako/python/blob/main/%D0%B1%D0%B5%D0%B1%D1%80%D0%B0/SCRENS/10.png)
 
 
 ## Шпаргалка по GIT
@@ -343,7 +378,4 @@ print('Стул -', chair_quantity, 'шт, стоимость', chair_cost, 'р�
 #### git restore - отмена изменений
 #### git push - отправка изменений в удалённый репозиторий
 
-## Список литературы
-#### Справка по markdown. URL: https://doka.guide/tools/markdown/.
-#### Оф. туториал по Python. URL: https://docs.python.org/3/tutorial/.
-#### команды GIT. URL: https://training.github.com/downloads/ru/github-git-cheat-sheet/.
+
